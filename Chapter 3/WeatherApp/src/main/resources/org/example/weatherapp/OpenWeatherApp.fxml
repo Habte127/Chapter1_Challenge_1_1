@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="mainRoot" alignment="CENTER" prefHeight="600.0" prefWidth="950.0" styleClass="root" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.weatherapp.client.FXMLDocumentController">
+    <children>
+        <StackPane fx:id="backgroundAnimationPane" />
+
+        <HBox alignment="CENTER" spacing="0" styleClass="main-container">
+            <!-- LEFT SIDEBAR -->
+            <VBox alignment="TOP_CENTER" prefWidth="250.0" styleClass="sidebar">
+                <padding>
+                    <Insets bottom="20.0" left="15.0" right="15.0" top="30.0" />
+                </padding>
+                <children>
+                    <Label styleClass="sidebar-title" text="Weather Profile" />
+
+                    <VBox alignment="CENTER" spacing="10.0" styleClass="profile-card">
+                        <ImageView fx:id="weatherIcon" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="temperatureLabel" styleClass="sidebar-temp" text="--°C" />
+                        <Label fx:id="descriptionLabel" styleClass="sidebar-desc" text="Weather Description" />
+                        <Label fx:id="cityLabel" styleClass="sidebar-city" text="City Name" />
+                        <Label fx:id="localTimeLabel" styleClass="sidebar-time" text="--:--" />
+                    </VBox>
+
+                    <VBox spacing="15.0" styleClass="sidebar-menu">
+                        <Button onAction="#showDashboard" styleClass="sidebar-button" text="Dashboard" />
+                        <Button onAction="#openSettings" styleClass="sidebar-button" text="Settings" />
+                        <Button onAction="#clearCache" styleClass="sidebar-button" text="Clear Cache" />
+                        <Button onAction="#showAbout" styleClass="sidebar-button" text="About" />
+                    </VBox>
+                </children>
+            </VBox>
+
+            <!-- MAIN CONTENT AREA -->
+            <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" styleClass="content-area">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+                <children>
+                    <HBox alignment="CENTER" spacing="10.0" styleClass="search">
+                        <children>
+                            <TextField fx:id="cityField" onAction="#searchWeather" promptText="Enter City Name" />
+                            <Button onAction="#searchWeather" styleClass="search-button" text="🔍">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Button>
+                            <Button onAction="#useCurrentLocation" styleClass="location-button" text="📍" />
+                            <Button onAction="#addToFavorites" styleClass="favorite-button" text="⭐" />
+                            <Button onAction="#toggleUnits" styleClass="unit-button" text="°C/°F" />
+                        </children>
+                    </HBox>
+
+                    <HBox alignment="CENTER" spacing="10.0" styleClass="favorites-bar">
+                        <children>
+                            <Label text="Favorites:" styleClass="favorites-label" />
+                            <HBox fx:id="favoritesContainer" spacing="5.0" alignment="CENTER_LEFT" />
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" />
+                        </padding>
+                    </HBox>
+
+                    <VBox styleClass="card">
+                        <padding>
+                            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                        </padding>
+                        <children>
+                            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                <children>
+                                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                        <children>
+                                            <Label styleClass="section-header" text="Current Details" />
+                                            <HBox spacing="30.0" styleClass="details-row">
+                                                <children>
+                                                    <VBox alignment="CENTER" styleClass="detail-item">
+                                                        <Label text="Humidity" styleClass="detail-label"/>
+                                                        <Label fx:id="humidityLabel" text="--%" styleClass="detail-value"/>
+                                                    </VBox>
+                                                    <VBox alignment="CENTER" styleClass="detail-item">
+                                                        <Label text="Wind" styleClass="detail-label"/>
+                                                        <Label fx:id="windLabel" text="-- m/s" styleClass="detail-value"/>
+                                                    </VBox>
+                                                    <VBox alignment="CENTER" styleClass="detail-item">
+                                                        <Label text="Precipitation" styleClass="detail-label"/>
+                                                        <Label fx:id="precipLabel" text="--" styleClass="detail-value"/>
+                                                    </VBox>
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER_RIGHT">
+                                        <children>
+                                            <StackPane fx:id="animationPane" prefHeight="100.0" prefWidth="100.0" />
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <Label styleClass="section-header" text="5-Day Forecast">
+                        <VBox.margin>
+                            <Insets top="20.0" bottom="10.0"/>
+                        </VBox.margin>
+                    </Label>
+
+                    <HBox fx:id="forecastContainer" alignment="CENTER" spacing="10.0" styleClass="forecast">
+                        <VBox.margin>
+                            <Insets bottom="10.0" />
+                        </VBox.margin>
+                    </HBox>
+
+                    <VBox fx:id="forecastDetailPane" alignment="CENTER_LEFT" managed="false" spacing="5.0" styleClass="details-pane" visible="false">
+                        <VBox.margin>
+                            <Insets top="15.0" />
+                        </VBox.margin>
+                        <children>
+                            <Label fx:id="detailDayLabel" styleClass="details-pane-title" />
+                            <GridPane hgap="10.0" vgap="5.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                    <Label fx:id="detailTempMinMaxLabel" styleClass="detail-temp" text="Min/Max Temp: --/--°C" />
+                                    <Label fx:id="detailFeelsLikeLabel" styleClass="detail-feels" text="Feels Like: --°C" GridPane.columnIndex="1" />
+                                    <Label fx:id="detailPressureLabel" styleClass="detail-pressure" text="Pressure: -- hPa" GridPane.rowIndex="1" />
+                                    <Label fx:id="detailCloudinessLabel" styleClass="detail-cloud" text="Cloudiness: --%" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="detailWindDirectionLabel" styleClass="detail-wind" text="Wind Direction: --°" GridPane.rowIndex="2" />
+                                    <Label fx:id="detailPopLabel" styleClass="detail-pop" text="Precip. Chance: --%" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                </children>
+                            </GridPane>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </HBox>
+
+        <!-- Settings Overlay -->
+        <VBox fx:id="settingsPane" alignment="CENTER" maxWidth="400.0" spacing="15.0" styleClass="settings-pane" visible="false" managed="false">
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+            <children>
+                <Label styleClass="settings-title" text="Theme &amp; Settings" />
+
+                <Label styleClass="settings-section-title" text="General" />
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <TextField fx:id="defaultCityInput" promptText="Default City" prefWidth="150.0" styleClass="text-field" />
+                        <Button onAction="#saveDefaultCity" styleClass="settings-option-button" text="Save" />
+                    </children>
+                </HBox>
+
+                <Label styleClass="settings-section-title" text="Background" />
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Button onAction="#setBackgroundDefault" styleClass="settings-option-button" text="Default" />
+                        <Button onAction="#setBackgroundForest" styleClass="settings-option-button" text="Forest" />
+                        <Button onAction="#setBackgroundCity" styleClass="settings-option-button" text="City" />
+                    </children>
+                </HBox>
+
+                <Label styleClass="settings-section-title" text="Icon Widgets" />
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                         <Button onAction="#setIconStyle2D" styleClass="settings-option-button" text="2D Flat" />
+                         <Button onAction="#setIconStyle3D" styleClass="settings-option-button" text="3D Glass" />
+                    </children>
+                </HBox>
+
+                <Label styleClass="settings-section-title" text="Notifications" />
+                <CheckBox fx:id="notificationToggle" onAction="#toggleNotifications" styleClass="settings-checkbox" text="Enable Notifications" />
+
+                <Button onAction="#closeSettings" styleClass="close-button" text="Close" />
+            </children>
+        </VBox>
+    </children>
+</StackPane>

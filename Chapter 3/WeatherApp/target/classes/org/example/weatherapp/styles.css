@@ -1,0 +1,366 @@
+/* --- Modern Glassmorphism Theme --- */
+
+/* 1. ROOT & BACKGROUND */
+.root {
+    -fx-background-image: url("https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+/* 2. MAIN CONTAINER */
+.main-container {
+    -fx-background-color: rgba(20, 25, 35, 0.65);
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 40, 0, 0, 15);
+    -fx-max-width: 980;
+    -fx-max-height: 650;
+}
+
+/* 3. SIDEBAR */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    -fx-background-radius: 30 0 0 30;
+    -fx-border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-title {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-opacity: 0.7;
+    -fx-padding: 0 0 10 0;
+}
+
+.profile-card {
+    -fx-padding: 30 0;
+    -fx-alignment: center;
+}
+
+.sidebar-temp {
+    -fx-font-size: 48px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);
+}
+
+.sidebar-desc {
+    -fx-font-size: 16px;
+    -fx-text-fill: #b3e5fc;
+    -fx-padding: 5 0;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+.sidebar-city {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10 0 0 0;
+}
+
+.sidebar-time {
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-padding: 5 0 0 0;
+}
+
+.sidebar-menu {
+    -fx-padding: 40 0 0 0;
+    -fx-spacing: 10;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+    -fx-padding: 12 20;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-padding: 12 25; /* Slight movement animation */
+}
+
+/* 4. CONTENT AREA */
+.content-area {
+    -fx-padding: 30 40;
+}
+
+/* 5. SEARCH BAR */
+.search {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 30;
+    -fx-padding: 5 15;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 30;
+    -fx-spacing: 5;
+}
+
+.search .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-font-size: 14px;
+    -fx-pref-width: 250;
+}
+
+.search-button, .location-button, .favorite-button, .unit-button, .settings-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 8;
+    -fx-background-radius: 50%;
+    -fx-transition: all 0.2s;
+}
+
+.search-button:hover, .location-button:hover, .favorite-button:hover, .unit-button:hover, .settings-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-text-fill: white;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.location-button { -fx-text-fill: #ff8a80; }
+.favorite-button { -fx-text-fill: #ffd54f; }
+
+/* Favorites Bar */
+.favorites-bar {
+    -fx-padding: 10 0;
+}
+.favorites-label {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+.favorite-chip {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 20;
+    -fx-padding: 4 10;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-font-size: 11px;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 20;
+}
+.favorite-chip:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 6. DETAILS CARDS (Mini Widgets) */
+.card {
+    -fx-background-color: transparent;
+    -fx-padding: 20 0;
+}
+
+.section-header {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 15 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+
+.details-row {
+    -fx-spacing: 20;
+}
+
+.detail-item {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 20;
+    -fx-padding: 15 25;
+    -fx-min-width: 120;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-transition: all 0.2s;
+}
+.detail-item:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.detail-label {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 5 0;
+}
+
+.detail-value {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* 7. FORECAST */
+.forecast {
+    -fx-spacing: 15;
+}
+
+.day {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 20;
+    -fx-padding: 15;
+    -fx-min-width: 100;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s;
+}
+
+.day:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-translate-y: -5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);
+}
+
+.day .label { -fx-text-fill: white; }
+.day .forecast-temp { -fx-font-size: 16px; -fx-font-weight: bold; }
+.day .forecast-desc { -fx-font-size: 11px; -fx-text-fill: rgba(255, 255, 255, 0.7); }
+
+.icon { -fx-padding: 5 0; }
+
+.forecast-date-outside {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 13px;
+    -fx-padding: 0 0 5 0;
+}
+
+/* 8. SETTINGS PANE */
+.settings-pane {
+    -fx-background-color: linear-gradient(to bottom right, rgba(30, 35, 45, 0.98), rgba(20, 25, 35, 0.99));
+    -fx-background-radius: 30;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-radius: 30;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 80, 0, 0, 20);
+    -fx-padding: 30;
+}
+
+.settings-title {
+    -fx-font-size: 24px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 20 0;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-alignment: center;
+}
+
+.settings-section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #90caf9;
+    -fx-padding: 15 0 5 0;
+    -fx-alignment: center-left;
+}
+
+.settings-option-button {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-text-fill: #e0e0e0;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-cursor: hand;
+    -fx-padding: 8 20;
+    -fx-font-size: 13px;
+    -fx-transition: all 0.2s;
+}
+
+.settings-option-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-text-fill: white;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.settings-pane .text-field {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #9e9e9e;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-padding: 8 12;
+}
+
+.settings-checkbox {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 10 0;
+}
+
+.settings-checkbox .box {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-radius: 4px;
+}
+
+.settings-checkbox:selected .mark {
+    -fx-background-color: #90caf9;
+}
+
+.close-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ef5350;
+    -fx-border-color: #ef5350;
+    -fx-border-radius: 20;
+    -fx-border-width: 1.5px;
+    -fx-cursor: hand;
+    -fx-padding: 8 30;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-margin: 20 0 0 0;
+    -fx-transition: all 0.2s;
+}
+
+.close-button:hover {
+    -fx-background-color: #ef5350;
+    -fx-text-fill: white;
+}
+
+/* 9. FORECAST DETAILS PANE */
+.details-pane {
+    -fx-background-color: rgba(20, 25, 35, 0.95);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-width: 1px;
+    -fx-border-radius: 20;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 30, 0, 0, 10);
+}
+
+.details-pane-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #90caf9;
+    -fx-padding: 0 0 15 0;
+}
+
+.details-pane .label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
